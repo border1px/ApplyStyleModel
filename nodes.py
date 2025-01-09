@@ -32,6 +32,9 @@ class StyleModelApply:
 
         n = cond.shape[1]
         c_out = []
+        
+        print(f"============== conditioning: {len(conditioning)}")
+        
         for t in conditioning:
             (txt, keys) = t
             keys = keys.copy()
@@ -41,6 +44,9 @@ class StyleModelApply:
                 attn_bias = torch.log(torch.Tensor([strength]))
                 # get the size of the mask image
                 mask_ref_size = keys.get("attention_mask_img_shape", (1, 1))
+                
+                print(f"============== attention_mask_img_shape: {mask_ref_size}")
+                
                 n_ref = mask_ref_size[0] * mask_ref_size[1]
                 n_txt = txt.shape[1]
                 # grab the existing mask
@@ -78,5 +84,5 @@ NODE_CLASS_MAPPINGS = {
 
 # Display name mappings
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "StyleModelApplyYPF": "Apply Style Model (YPF)",
+    "StyleModelApplyYPF2": "Apply Style Model (YPF)",
 }
