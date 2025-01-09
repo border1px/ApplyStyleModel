@@ -73,10 +73,10 @@ class StyleModelApply:
 
 # Node class mappings
 NODE_CLASS_MAPPINGS = {
-    "StyleModelApply": StyleModelApply,
+    "StyleModelApplyYPF": StyleModelApply,
 }
 
 # Display name mappings
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "StyleModelApply": "Apply Style Model (ypf)",
+    "StyleModelApplyYPF": "Apply Style Model (YPF)",
 }
