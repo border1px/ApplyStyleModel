@@ -37,7 +37,7 @@ class StyleModelApply:
         
         print(f"===================== clip_vision_output: {clip_vision_output}")
         
-        print(f"===================== clip_vision_output.shape: {clip_vision_output.shape}")
+        # print(f"===================== clip_vision_output.shape: {clip_vision_output.shape}")
         
         print(f"===================== style_model.get_cond(clip_vision_output): {cond}")
         
@@ -56,11 +56,10 @@ class StyleModelApply:
                 
                 print(f"===================== n_txt.shape: {txt.shape}")
                 print(f"===================== n_txt.shape[1]: {txt.shape[1]}")
+                print(f"===================== conditioning-keys: {keys}")
                 
                 # grab the existing mask
                 mask = keys.get("attention_mask", None)
-                
-                print(f"===================== conditioning-keys: {keys}")
                 
                 # create a default mask if it doesn't exist
                 if mask is None:
