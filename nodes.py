@@ -41,6 +41,8 @@ class StyleModelApply:
         
         print(f"===================== style_model.get_cond(clip_vision_output): {cond}")
         
+        print(f"===================== style_model.get_cond(clip_vision_output).shape: {cond.shape}")
+        
         for t in conditioning:
             (txt, keys) = t
             keys = keys.copy()
