@@ -33,7 +33,7 @@ class StyleModelApply:
         n = cond.shape[1]
         c_out = []
         
-        print(f"============== conditioning: {len(conditioning)}")
+        print(f"===================== conditioning: {len(conditioning)}")
         
         for t in conditioning:
             (txt, keys) = t
@@ -45,12 +45,20 @@ class StyleModelApply:
                 # get the size of the mask image
                 mask_ref_size = keys.get("attention_mask_img_shape", (1, 1))
                 
-                print(f"============== attention_mask_img_shape: {mask_ref_size}")
+                print(f"===================== attention_mask_img_shape: {mask_ref_size}")
                 
                 n_ref = mask_ref_size[0] * mask_ref_size[1]
                 n_txt = txt.shape[1]
+                
+                print(f"===================== n_txt.shape: {txt.shape}")
+                print(f"===================== n_txt.shape[1]: {txt.shape[1]}")
+                
                 # grab the existing mask
                 mask = keys.get("attention_mask", None)
+                
+                print(f"===================== conditioning-keys: {keys}")
+                print(f"===================== attention_mask: {mask}")
+                
                 # create a default mask if it doesn't exist
                 if mask is None:
                     mask = torch.zeros((txt.shape[0], n_txt + n_ref, n_txt + n_ref), dtype=torch.float16)
@@ -79,10 +87,10 @@ class StyleModelApply:
 
 # Node class mappings
 NODE_CLASS_MAPPINGS = {
-    "StyleModelApplyYPF": StyleModelApply,
+    "ApplyStyleModel（YPF）": StyleModelApply,
 }
 
 # Display name mappings
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "StyleModelApplyYPF2": "Apply Style Model (YPF)",
+    "StyleModelApply": "Apply Style Model",
 }
