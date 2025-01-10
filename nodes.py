@@ -33,7 +33,13 @@ class StyleModelApply:
         n = cond.shape[1]
         c_out = []
         
-        print(f"===================== conditioning: {len(conditioning)}")
+        print(f"===================== len(conditioning): {len(conditioning)}")
+        
+        print(f"===================== clip_vision_output: {clip_vision_output}")
+        
+        print(f"===================== clip_vision_output.shape: {clip_vision_output.shape}")
+        
+        print(f"===================== style_model.get_cond(clip_vision_output): {cond}")
         
         for t in conditioning:
             (txt, keys) = t
@@ -44,9 +50,7 @@ class StyleModelApply:
                 attn_bias = torch.log(torch.Tensor([strength]))
                 # get the size of the mask image
                 mask_ref_size = keys.get("attention_mask_img_shape", (1, 1))
-                
-                print(f"===================== attention_mask_img_shape: {mask_ref_size}")
-                
+                                
                 n_ref = mask_ref_size[0] * mask_ref_size[1]
                 n_txt = txt.shape[1]
                 
@@ -57,7 +61,6 @@ class StyleModelApply:
                 mask = keys.get("attention_mask", None)
                 
                 print(f"===================== conditioning-keys: {keys}")
-                print(f"===================== attention_mask: {mask}")
                 
                 # create a default mask if it doesn't exist
                 if mask is None:
