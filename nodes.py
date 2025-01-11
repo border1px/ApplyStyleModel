@@ -35,10 +35,10 @@ class StyleModelApply:
         
         print(f"===================== len(conditioning): {len(conditioning)}")
         
-        print(f"===================== clip_vision_output: {clip_vision_output}")
+        print(f"===================== dir(clip_vision_output): {dir(clip_vision_output)}")
         
-        # print(f"===================== clip_vision_output.shape: {clip_vision_output.shape}")
-        
+        print(f"===================== vars(clip_vision_output): {vars(clip_vision_output)}")
+                
         print(f"===================== style_model.get_cond(clip_vision_output): {cond}")
         
         print(f"===================== style_model.get_cond(clip_vision_output).shape: {cond.shape}")
